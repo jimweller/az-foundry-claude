@@ -1,0 +1,9 @@
+export ARM_SUBSCRIPTION_ID="your-subscription-id"
+export TF_VAR_subscription_id="$ARM_SUBSCRIPTION_ID"
+export TF_VAR_resource_group_name="your-resource-group"
+export TF_VAR_location="eastus2"
+export TF_VAR_prefix="your-prefix"
+export TF_VAR_organization_name="your-org"
+export TF_VAR_tags='{"Application":"your-app","BusinessUnit":"your-bu","CostCenter":"your-cc","ServiceTeam":"your-st","Environment":"nprod","Product":"your-product"}'
+export RESOURCE_GROUP="$TF_VAR_resource_group_name"
+export AIS_NAME="${TF_VAR_prefix}-fais"
