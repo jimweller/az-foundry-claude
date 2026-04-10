@@ -1,0 +1,23 @@
+opus:
+  name: claude-opus-4-6
+  format: Anthropic
+  version: "1"
+  modelProviderData:
+    countryCode: US
+    industry: healthcare
+
+sonnet:
+  name: claude-sonnet-4-5
+  format: Anthropic
+  version: "20250929"
+  modelProviderData:
+    countryCode: US
+    industry: healthcare
+
+haiku:
+  name: claude-haiku-4-5
+  format: Anthropic
+  version: "20251001"
+  modelProviderData:
+    countryCode: US
+    industry: healthcare
