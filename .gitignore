@@ -96,7 +96,7 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Project ###
-.envrc
+.mise.toml
 foundry-settings.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,terraform

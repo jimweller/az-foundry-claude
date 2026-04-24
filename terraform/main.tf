@@ -23,6 +23,37 @@ resource "azurerm_ai_services" "this" {
   }
 }
 
+resource "azapi_resource" "claude_opus_4_7" {
+  type                      = "Microsoft.CognitiveServices/accounts/deployments@2025-10-01-preview"
+  name                      = "claude-opus-4-7"
+  parent_id                 = azurerm_ai_services.this.id
+  schema_validation_enabled = false
+
+  body = {
+    properties = {
+      model = {
+        format  = "Anthropic"
+        name    = "claude-opus-4-7"
+        version = "1"
+      }
+      modelProviderData = {
+        countryCode      = "US"
+        industry         = "healthcare"
+        organizationName = var.organization_name
+      }
+      versionUpgradeOption = "OnceNewDefaultVersionAvailable"
+    }
+    sku = {
+      name     = "GlobalStandard"
+      capacity = 2000
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [body, schema_validation_enabled]
+  }
+}
+
 resource "azapi_resource" "claude_opus_4_6" {
   type                      = "Microsoft.CognitiveServices/accounts/deployments@2025-10-01-preview"
   name                      = "claude-opus-4-6"
@@ -45,7 +76,38 @@ resource "azapi_resource" "claude_opus_4_6" {
     }
     sku = {
       name     = "GlobalStandard"
-      capacity = 250
+      capacity = 2000
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [body, schema_validation_enabled]
+  }
+}
+
+resource "azapi_resource" "claude_sonnet_4_6" {
+  type                      = "Microsoft.CognitiveServices/accounts/deployments@2025-10-01-preview"
+  name                      = "claude-sonnet-4-6"
+  parent_id                 = azurerm_ai_services.this.id
+  schema_validation_enabled = false
+
+  body = {
+    properties = {
+      model = {
+        format  = "Anthropic"
+        name    = "claude-sonnet-4-6"
+        version = "1"
+      }
+      modelProviderData = {
+        countryCode      = "US"
+        industry         = "healthcare"
+        organizationName = var.organization_name
+      }
+      versionUpgradeOption = "OnceNewDefaultVersionAvailable"
+    }
+    sku = {
+      name     = "GlobalStandard"
+      capacity = 4000
     }
   }
 
@@ -76,7 +138,7 @@ resource "azapi_resource" "claude_sonnet_4_5" {
     }
     sku = {
       name     = "GlobalStandard"
-      capacity = 250
+      capacity = 4000
     }
   }
 
@@ -107,7 +169,7 @@ resource "azapi_resource" "claude_haiku_4_5" {
     }
     sku = {
       name     = "GlobalStandard"
-      capacity = 250
+      capacity = 4000
     }
   }
 
@@ -133,7 +195,7 @@ resource "azapi_resource" "deepseek_v3_2" {
     }
     sku = {
       name     = "GlobalStandard"
-      capacity = 250
+      capacity = 10000
     }
   }
 
