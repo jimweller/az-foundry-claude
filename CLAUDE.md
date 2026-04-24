@@ -12,7 +12,7 @@ workloads where AWS Bedrock Okta SSO token expiry is problematic.
 
 ## Azure Context
 
-- Subscription, resource group, location set in `.envrc`
+- Subscription, resource group, location set in `.mise.toml`
 - PIM elevation required for write access
 - Region must support Claude (East US 2 or Sweden Central)
 
@@ -20,7 +20,9 @@ workloads where AWS Bedrock Okta SSO token expiry is problematic.
 
 | Model             | Deployment Name   | Format    | Deployment Type |
 | ----------------- | ----------------- | --------- | --------------- |
+| Claude Opus 4.7   | claude-opus-4-7   | Anthropic | Global Standard |
 | Claude Opus 4.6   | claude-opus-4-6   | Anthropic | Global Standard |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | Anthropic | Global Standard |
 | Claude Sonnet 4.5 | claude-sonnet-4-5 | Anthropic | Global Standard |
 | Claude Haiku 4.5  | claude-haiku-4-5  | Anthropic | Global Standard |
 | DeepSeek-V3.2     | deepseek-3-2      | DeepSeek  | Global Standard |
@@ -28,7 +30,7 @@ workloads where AWS Bedrock Okta SSO token expiry is problematic.
 ## Commands
 
 ```bash
-PROJECT_ROOT=$(git rev-parse --show-toplevel) && source "$PROJECT_ROOT/.envrc"
+# mise auto-loads env vars on cd when `mise activate` is in the shell rc
 cd terraform && tofu init
 tofu plan
 tofu apply
@@ -65,7 +67,7 @@ claude --settings ~/.claude/settings-azure.json -p "hello"
 - `ANTHROPIC_FOUNDRY_RESOURCE`
 - `ANTHROPIC_FOUNDRY_API_KEY`
 - `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-6`
-- `ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5`
+- `ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-6`
 - `ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5`
 
 ## One-Shot Testing
@@ -75,7 +77,7 @@ claude --settings ~/.claude/settings-azure.json --model opus -p "hello"
 claude --settings ~/.claude/settings-azure.json --model sonnet -p "hello"
 claude --settings ~/.claude/settings-azure.json --model haiku -p "hello"
 opencode run -m "az-anthropic/claude-opus-4-6" "hello"
-opencode run -m "az-anthropic/claude-sonnet-4-5" "hello"
+opencode run -m "az-anthropic/claude-sonnet-4-6" "hello"
 opencode run -m "az-anthropic/claude-haiku-4-5" "hello"
 opencode run -m "az-foundry/deepseek-3-2" "hello"
 ```

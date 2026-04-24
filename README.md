@@ -8,7 +8,9 @@ Azure foundry and cognitive services for use with claude code.
 | -------------- | ---------------------- | ------------------------- |
 | Resource group | azurerm_resource_group | `var.resource_group_name` |
 | AI Services    | azurerm_ai_services    | `${var.prefix}-fais`      |
+| Claude Opus    | azapi_resource         | `claude-opus-4-7`         |
 | Claude Opus    | azapi_resource         | `claude-opus-4-6`         |
+| Claude Sonnet  | azapi_resource         | `claude-sonnet-4-6`       |
 | Claude Sonnet  | azapi_resource         | `claude-sonnet-4-5`       |
 | Claude Haiku   | azapi_resource         | `claude-haiku-4-5`        |
 | DeepSeek V3.2  | azapi_resource         | `deepseek-3-2`            |
@@ -22,13 +24,12 @@ Azure foundry and cognitive services for use with claude code.
 | Required header | `anthropic-version: 2023-06-01`                                                                     |
 | Settings file   | `~/.claude/settings-azure.json`                                                                     |
 | Env vars        | `ANTHROPIC_FOUNDRY_RESOURCE`, `ANTHROPIC_FOUNDRY_API_KEY` (required by Claude Code in foundry mode) |
-| Infra vars      | `ARM_SUBSCRIPTION_ID`, `RESOURCE_GROUP`, `LOCATION` in `.envrc`                                     |
+| Infra vars      | `ARM_SUBSCRIPTION_ID`, `TF_VAR_*`, `RESOURCE_GROUP`, `AIS_NAME` in `.mise.toml`                     |
 
 ## Usage
 
 ```bash
-# deploy
-PROJECT_ROOT=$(git rev-parse --show-toplevel) && source "$PROJECT_ROOT/.envrc"
+# deploy (mise auto-loads env vars on cd)
 cd terraform && tofu init && tofu apply
 
 # retrieve API key
@@ -52,7 +53,7 @@ claude --settings ~/.claude/settings-azure.json --model haiku -p "hello"
 
 # opencode
 opencode run -m "az-anthropic/claude-opus-4-6" "hello"
-opencode run -m "az-anthropic/claude-sonnet-4-5" "hello"
+opencode run -m "az-anthropic/claude-sonnet-4-6" "hello"
 opencode run -m "az-anthropic/claude-haiku-4-5" "hello"
 opencode run -m "az-foundry/deepseek-3-2" "hello"
 ```
