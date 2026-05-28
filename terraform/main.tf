@@ -23,6 +23,37 @@ resource "azurerm_ai_services" "this" {
   }
 }
 
+resource "azapi_resource" "claude_opus_4_8" {
+  type                      = "Microsoft.CognitiveServices/accounts/deployments@2025-10-01-preview"
+  name                      = "claude-opus-4-8"
+  parent_id                 = azurerm_ai_services.this.id
+  schema_validation_enabled = false
+
+  body = {
+    properties = {
+      model = {
+        format  = "Anthropic"
+        name    = "claude-opus-4-8"
+        version = "1"
+      }
+      modelProviderData = {
+        countryCode      = "US"
+        industry         = "healthcare"
+        organizationName = var.organization_name
+      }
+      versionUpgradeOption = "OnceNewDefaultVersionAvailable"
+    }
+    sku = {
+      name     = "GlobalStandard"
+      capacity = 2000
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [body, schema_validation_enabled]
+  }
+}
+
 resource "azapi_resource" "claude_opus_4_7" {
   type                      = "Microsoft.CognitiveServices/accounts/deployments@2025-10-01-preview"
   name                      = "claude-opus-4-7"

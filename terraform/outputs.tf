@@ -12,6 +12,7 @@ output "ai_services_endpoint" {
 
 output "deployment_names" {
   value = [
+    azapi_resource.claude_opus_4_8.name,
     azapi_resource.claude_opus_4_7.name,
     azapi_resource.claude_opus_4_6.name,
     azapi_resource.claude_sonnet_4_6.name,

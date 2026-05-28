@@ -20,6 +20,7 @@ workloads where AWS Bedrock Okta SSO token expiry is problematic.
 
 | Model             | Deployment Name   | Format    | Deployment Type |
 | ----------------- | ----------------- | --------- | --------------- |
+| Claude Opus 4.8   | claude-opus-4-8   | Anthropic | Global Standard |
 | Claude Opus 4.7   | claude-opus-4-7   | Anthropic | Global Standard |
 | Claude Opus 4.6   | claude-opus-4-6   | Anthropic | Global Standard |
 | Claude Sonnet 4.6 | claude-sonnet-4-6 | Anthropic | Global Standard |
@@ -92,3 +93,8 @@ opencode run -m "az-foundry/deepseek-3-2" "hello"
 ## Docs
 
 - `README.md` — architecture, configuration, usage, testing
+- @.llmdocs/architecture.md — components, provider strategy, lifecycle constraints, directory layout
+- @.llmdocs/api.md — endpoint, auth headers, Claude Code and opencode integration, outputs
+- @.llmdocs/data-model.md — resource hierarchy, model deployment table, variables
+- @.llmdocs/deployment.md — deploy workflow, add/recreate model runbooks, region constraints
+- @.llmdocs/ops.md — connectivity testing, API key rotation, drift detection, state files

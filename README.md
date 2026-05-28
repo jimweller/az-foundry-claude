@@ -8,6 +8,7 @@ Azure foundry and cognitive services for use with claude code.
 | -------------- | ---------------------- | ------------------------- |
 | Resource group | azurerm_resource_group | `var.resource_group_name` |
 | AI Services    | azurerm_ai_services    | `${var.prefix}-fais`      |
+| Claude Opus    | azapi_resource         | `claude-opus-4-8`         |
 | Claude Opus    | azapi_resource         | `claude-opus-4-7`         |
 | Claude Opus    | azapi_resource         | `claude-opus-4-6`         |
 | Claude Sonnet  | azapi_resource         | `claude-sonnet-4-6`       |
